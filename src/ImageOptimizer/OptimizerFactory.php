@@ -155,6 +155,15 @@ class OptimizerFactory
         return $this->optimizers[$name];
     }
 
+    /**
+     * @param string $name
+     * @param Optimizer $optimizer
+     */
+    public function add($name, Optimizer $optimizer)
+    {
+        $this->optimizers[$name] = $this->wrap($optimizer);
+    }
+
     private function resolveDefault($default)
     {
         return is_callable($default) ? call_user_func($default) : $default;
